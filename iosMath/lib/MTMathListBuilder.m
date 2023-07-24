@@ -228,7 +228,12 @@ NSString *const MTParseError = @"ParseError";
             atom = [MTMathAtomFactory atomForCharacter:ch];
             if (!atom) {
                 // Not a recognized character
-                continue;
+//                continue;
+                NSString *chStr = [NSString stringWithCharacters:&ch length:1];
+                if ([chStr isEqualToString:@" "]) {
+                    continue;
+                }
+                atom = [MTMathAtom atomWithType:kMTMathAtomOrdinary value:chStr];
             }
         }
         NSAssert(atom != nil, @"Atom shouldn't be nil");

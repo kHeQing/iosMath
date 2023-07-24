@@ -84,10 +84,6 @@ NSString *const MTSymbolDegree = @"\u00B0"; // \circ
         return [MTMathAtom atomWithType:kMTMathAtomOrdinary value:chStr];
     } else if (ch < 0x21 || ch > 0x7E) {
         // skip non ascii characters and spaces
-        // 希腊字符范围 U+0370 – U+03FF
-        if (ch > 0x0370 && ch < 0x03FF) {
-            return [MTMathAtom atomWithType:kMTMathAtomVariable value:chStr];
-        }
         return nil;
     } else if (ch == '$' || ch == '%' || ch == '#' || ch == '&' || ch == '~' || ch == '\'') {
         // These are latex control characters that have special meanings. We don't support them.
